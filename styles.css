@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding; 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 600px;
+    margin: auto;
+    background: #2c2c3e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+h1 {
+    font-size: 28px;
+    color: #f8b400;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #ffcc00;
+    margin-top: 20px;
+}
+
+#now-playing {
+    margin-top: 20px;
+    padding: 15px;
+    background: #3a3a4f;
+    border-radius: 8px;
+}
+
+#spotify-now-playing {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+.social-links{
+    margin-top: 20px;
+}
+
+.social-links a{
+    display: inline-block;
+    background: #4a4a6a;
+    color: white;
+    margin: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+
+.social-links a:hover{
+    background: #ff4500;
+}
