@@ -1,2 +1,1 @@
-# cil
-A cli based linktree
+A Flask-based web app that fetches and displays the currently playing Spotify song in real-time. The frontend, styled with a dark emo aesthetic, integrates with JavaScript to dynamically update song data. Hosted on Render for live deployment.
