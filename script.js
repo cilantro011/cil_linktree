@@ -1,9 +1,17 @@
 async function fetchFlaskData(){
     try {
-        const response = await fetch("http://127.0.0.1:5000/");
+        const response = await fetch("http://127.0.0.1:5000/now-playing");
         const data = await response.json();
+        
 
-        document.getElementById("spotify-now-playing").innerText = data.message;
+        const nowPlayingElement = document.getElementById("spotify-now-playing");
+
+        if (data.song !== "No song playing"){
+            nowPlayingElement.innerHTML = `<strong>Now Playing:</strong> ${data.song} - ${data.artist}`;
+        }
+        else {
+            nowPlayingElement.innerHTML = `<strong>No song playing</strong>`;
+        }
     } catch (error) {
         console.error("error fetching data:", error);
     }
@@ -11,3 +19,4 @@ async function fetchFlaskData(){
 
 fetchFlaskData();
 
+setInterval(fetchNowPlaying, 5000);

@@ -1,9 +1,13 @@
 from flask import Flask, jsonify, session, redirect, request
+import json
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "sajan"
 app.config["SESSION_COOKIE_NAME"] = "Spotify Login"
 
@@ -22,16 +26,25 @@ sp_oauth = SpotifyOAuth(
     cache_path = ".spotifycache"
 )
 
+
 def get_spotify_token():
-    token_info = session.get("token_info", None)
-    
-    if not token_info:
-        return None
-    
+    """Retrieve or refresh the Spotify access token, saving it to a file."""
+    if not os.path.exists(".spotifycache"):
+        return None  # ✅ If cache file doesn't exist, user needs to log in.
+
+    try:
+        with open(".spotifycache", "r") as f:
+            token_info = json.load(f)  # ✅ Read token from file
+    except json.JSONDecodeError:
+        return None  # ✅ If file is corrupt, user needs to log in.
+
+    # Check if the token has expired
     if time.time() > token_info["expires_at"]:
+        print("Access token expired. Refreshing...")
         token_info = sp_oauth.refresh_access_token(token_info["refresh_token"])
-        session["token_info"] = token_info
-    
+        with open(".spotifycache", "w") as f:
+            json.dump(token_info, f)  # ✅ Save refreshed token
+
     return token_info["access_token"]
 
 
@@ -42,7 +55,7 @@ def now_playing():
     access_token = get_spotify_token()
     
     if not access_token:
-        return redirect('/login')
+        return jsonify({"error": "User not authenticated"}), 401
     
     sp = spotipy.Spotify(auth=access_token)
     
