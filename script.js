@@ -1,3 +1,4 @@
+
 async function fetchFlaskData(){
     try {
         const response = await fetch("http://127.0.0.1:5000/now-playing");
@@ -6,7 +7,8 @@ async function fetchFlaskData(){
 
         const nowPlayingElement = document.getElementById("spotify-now-playing");
 
-        if (data.song !== "No song playing"){
+        if (data.song !== "No song playing" ){
+            currentSong = data.song; // Update current song
             nowPlayingElement.innerHTML = `<strong>Now Playing:</strong> ${data.song} - ${data.artist}`;
         }
         else {
@@ -19,4 +21,4 @@ async function fetchFlaskData(){
 
 fetchFlaskData();
 
-setInterval(fetchNowPlaying, 5000);
+setInterval(fetchFlaskData, 3000);

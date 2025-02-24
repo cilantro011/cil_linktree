@@ -14,7 +14,7 @@ app.config["SESSION_COOKIE_NAME"] = "Spotify Login"
 #Spotify API credentials
 SPOTIPY_CLIENT_ID = "4520adbd1d724a10bd386fb6fc818f7d"
 SPOTIPY_CLIENT_SECRET = "62b2420df69345c1a0f5887ba7e950d4"
-SPOTIPY_REDIRECT_URI = "https://cil-spotify-status.onrender.com/callback"
+SPOTIPY_REDIRECT_URI = "http://127.0.0.1:5000/now-playing"
 
 
 #setup authentication
