@@ -8,6 +8,11 @@ from flask import send_from_directory
 @app.route("/")
 def root():
     return send_from_directory(".", "index.html")
+# Serve CSS, JS, and icons
+
+@app.route("/<path:path>")
+def static_files(path):
+    return send_from_directory(".", path)
 
 app = Flask(__name__)
 CORS(app)
