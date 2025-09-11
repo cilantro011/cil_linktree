@@ -5,15 +5,6 @@ from spotipy.oauth2 import SpotifyOAuth
 from flask_cors import CORS
 from flask import send_from_directory
 
-@app.route("/")
-def root():
-    return send_from_directory(".", "index.html")
-# Serve CSS, JS, and icons
-
-@app.route("/<path:path>")
-def static_files(path):
-    return send_from_directory(".", path)
-
 app = Flask(__name__)
 CORS(app)
 
@@ -68,6 +59,16 @@ def now_playing():
     except Exception as e:
         print("Spotify error:", e)
         return jsonify({"error": "Failed to fetch now playing"}), 500
+    
+    
+@app.route("/")
+def root():
+    return send_from_directory(".", "index.html")
+# Serve CSS, JS, and icons
+
+@app.route("/<path:path>")
+def static_files(path):
+    return send_from_directory(".", path)
 
 if __name__ == "__main__":
     app.run(debug=True)
