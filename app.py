@@ -3,6 +3,11 @@ from flask import Flask, jsonify, redirect, request
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from flask_cors import CORS
+from flask import send_from_directory
+
+@app.route("/")
+def root():
+    return send_from_directory(".", "index.html")
 
 app = Flask(__name__)
 CORS(app)
