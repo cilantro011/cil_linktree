@@ -11,6 +11,8 @@ CORS(app)
 SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
 SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
 SPOTIPY_REDIRECT_URI = os.getenv("SPOTIPY_REDIRECT_URI", "http://localhost:5000/callback")  # default local
+
+SPOTIPY_REFRESH_TOKEN = os.getenv("SPOTIPY_REFRESH_TOKEN")
 SCOPE = "user-read-currently-playing"
 
 sp_oauth = SpotifyOAuth(
@@ -22,12 +24,10 @@ sp_oauth = SpotifyOAuth(
 )
 
 def get_spotify_token():
-    tok = sp_oauth.get_cached_token()
-    if not tok:
+    if not SPOTIPY_REFRESH_TOKEN:
         return None
-    if sp_oauth.is_token_expired(tok):
-        tok = sp_oauth.refresh_access_token(tok["refresh_token"])
-    return tok["access_token"]
+    token_info = sp_oauth.refresh_access_token(SPOTIPY_REFRESH_TOKEN)
+    return token_info["access_token"]
 
 @app.route("/login")
 def login():
