@@ -1,29 +1,48 @@
-A minimalistic dark-themed webpage that displays your currently playing song from Spotify in real-time. Designed with an emo aesthetic for Discord bio integration.
+🎶 Cil Linktree – Spotify Now Playing
 
-Features
-Fetches now playing song from Spotify.
-Displays artist and song title with real-time updates.
-Dark, minimal cyber-gothic aesthetic.
-Animated elements with glow effects.
+A minimalistic dark-themed webpage that displays your currently playing song from Spotify in real-time.
+Designed with an emo / cyber-gothic aesthetic for seamless Discord bio integration.
 
-How to Run Locally
-Prerequisites
-Install Python (>=3.8) if not installed:
+✨ Features
 
-Download Python
-Install required dependencies:
-            pip install flask spotipy flask-cors
+🎧 Fetches current song from Spotify API
 
-Running the App
-    Clone this repository:
-            git clone https://github.com/cilantro011/cil_linktree.git
-            cd cil_linktree
-            
-    Run the Flask server:
-        python app.py
+⏱️ Real-time updates for song title and artist
 
-    Open index.html in your browser.
+🌌 Dark, minimal cyber-gothic aesthetic
 
-    Log in to Spotify when prompted.
+💫 Animated UI elements with glow effects
 
-    Enjoy your now-playing status!
+🔗 Easy to integrate into personal pages or Discord bios
+
+⚙️ Installation
+1. Prerequisites
+
+Python 3.8+
+A Spotify Developer Account
+
+2. Clone the Repository
+
+Run this in your terminal:
+git clone https://github.com/cilantro011/cil_linktree.git
+
+3. Install Dependencies
+
+Run this in your terminal:
+pip install flask spotipy flask-cors
+
+🚀 Running the App
+
+Run this in your terminal:
+python app.py
+Then open index.html in your browser.
+Log in to Spotify when prompted.
+See your currently playing track update live.
+
+📸 Demo
+<img width="1806" height="987" alt="image" src="https://github.com/user-attachments/assets/645cc6c0-18c2-4069-9dfd-fc7234661882" />
+
+🤝 Contributing
+
+Pull requests and suggestions are welcome!
+
