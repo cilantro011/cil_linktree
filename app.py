@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
 from flask import Flask, jsonify, redirect, request
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
